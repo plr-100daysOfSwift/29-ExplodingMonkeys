@@ -20,8 +20,11 @@ class BuildingNode: SKSpriteNode {
 		configurePhysics()
 	}
 
-	configurePhysics() {
-
+	func configurePhysics() {
+		physicsBody = SKPhysicsBody(texture: texture!, size: size)
+		physicsBody?.isDynamic = false
+		physicsBody?.categoryBitMask = CollisionTypes.building.rawValue
+		physicsBody?.collisionBitMask = CollisionTypes.banana.rawValue
 	}
 
 	drwaBuilding(size: CGSize) -> UIImage {

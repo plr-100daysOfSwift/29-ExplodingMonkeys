@@ -68,7 +68,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <connections>
-                        <outlet property="angleLabel" destination="uWi-UQ-5Cw" id="sgq-eE-8sd"/>
+                        <outlet property="angleLabel" destination="uWi-UQ-5Cw" id="PSN-YA-WmE"/>
                         <outlet property="angleSlider" destination="Lws-Ay-G7K" id="izG-hr-yGu"/>
                         <outlet property="launchButton" destination="M0i-fO-DnJ" id="eDV-Sl-Z4k"/>
                         <outlet property="playerLabel" destination="6ka-FP-VLq" id="v43-Ec-iSE"/>

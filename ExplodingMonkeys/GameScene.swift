@@ -75,5 +75,9 @@ class GameScene: SKScene {
 		addChild(player2)
 
 	}
+
+	func deg2rad(degrees: Int) -> Double {
+		return Double(degrees) * Double.pi / 180
+	}
 	
 }

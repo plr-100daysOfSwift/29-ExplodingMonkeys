@@ -69,6 +69,13 @@ class GameViewController: UIViewController {
 	}
 
 	@IBAction func launch(_ sender: Any) {
+		angleSlider.isHidden = true
+		angleLabel.isHidden = true
+		velocitySlider.isHidden = true
+		velocityLabel.isHidden = true
+		launchButton.isHidden = true
+
+		currentGame.launch(angle: Int(angleSlider.value), velocity: Int(velocitySlider.value))
 	}
 	
 }

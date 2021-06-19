@@ -77,5 +77,18 @@ class GameViewController: UIViewController {
 
 		currentGame.launch(angle: Int(angleSlider.value), velocity: Int(velocitySlider.value))
 	}
+
+	func activatePlayer(number: Int) {
+		if number == 1 {
+			playerLabel.text = "<<< PLAYER ONE"
+		} else {
+			playerLabel.text = "PLAYER TWO >>>"
+		}
+		angleSlider.isHidden = false
+		angleLabel.isHidden = false
+		velocitySlider.isHidden = false
+		velocityLabel.isHidden = false
+		launchButton.isHidden = false
+	}
 	
 }

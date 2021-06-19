@@ -15,6 +15,8 @@
 		DAD02B6D267D56B300077023 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAD02B6C267D56B300077023 /* Assets.xcassets */; };
 		DAD02B77267D57A100077023 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = DAD02B76267D57A100077023 /* README.md */; };
 		DAD02B79267D58DA00077023 /* BuildingNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD02B78267D58DA00077023 /* BuildingNode.swift */; };
+		DADCAA3A267EAC5B006B45A4 /* hitPlayer.sks in Resources */ = {isa = PBXBuildFile; fileRef = DADCAA38267EAC5B006B45A4 /* hitPlayer.sks */; };
+		DADCAA3B267EAC5B006B45A4 /* hitBuilding.sks in Resources */ = {isa = PBXBuildFile; fileRef = DADCAA39267EAC5B006B45A4 /* hitBuilding.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		DAD02B6E267D56B300077023 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DAD02B76267D57A100077023 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		DAD02B78267D58DA00077023 /* BuildingNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingNode.swift; sourceTree = "<group>"; };
+		DADCAA38267EAC5B006B45A4 /* hitPlayer.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = hitPlayer.sks; sourceTree = "<group>"; };
+		DADCAA39267EAC5B006B45A4 /* hitBuilding.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = hitBuilding.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +73,8 @@
 				DAD02B6C267D56B300077023 /* Assets.xcassets */,
 				DAD02B6E267D56B300077023 /* Info.plist */,
 				DAD02B78267D58DA00077023 /* BuildingNode.swift */,
+				DADCAA39267EAC5B006B45A4 /* hitBuilding.sks */,
+				DADCAA38267EAC5B006B45A4 /* hitPlayer.sks */,
 			);
 			path = ExplodingMonkeys;
 			sourceTree = "<group>";
@@ -132,8 +138,10 @@
 			files = (
 				DAD02B6B267D56B200077023 /* Main.storyboard in Resources */,
 				DAD02B62267D56B200077023 /* GameScene.sks in Resources */,
+				DADCAA3A267EAC5B006B45A4 /* hitPlayer.sks in Resources */,
 				DAD02B77267D57A100077023 /* README.md in Resources */,
 				DAD02B6D267D56B300077023 /* Assets.xcassets in Resources */,
+				DADCAA3B267EAC5B006B45A4 /* hitBuilding.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

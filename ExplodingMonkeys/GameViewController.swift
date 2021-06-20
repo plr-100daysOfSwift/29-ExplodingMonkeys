@@ -11,6 +11,7 @@ import SpriteKit
 class GameViewController: UIViewController {
 
 	var currentGame: GameScene!
+	var score: Score!
 
 	@IBOutlet var angleSlider: UISlider!
 	@IBOutlet var angleLabel: UILabel!
@@ -22,6 +23,9 @@ class GameViewController: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+
+		score = Score()
+		scoreLabel.text = score.description()
 
 		angleChanged(self)
 		velocityChanged(self)
@@ -90,6 +94,12 @@ class GameViewController: UIViewController {
 		velocitySlider.isHidden = false
 		velocityLabel.isHidden = false
 		launchButton.isHidden = false
+		scoreLabel.text = score.description()
+	}
+
+	func didWin(_ player: Player) {
+		score.increment(player: player)
+		scoreLabel.text = score.description()
 	}
 	
 }

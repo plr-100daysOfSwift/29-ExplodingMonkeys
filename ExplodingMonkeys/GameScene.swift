@@ -202,7 +202,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 	override func update(_ currentTime: TimeInterval) {
 		guard banana != nil else { return	}
 
-		if abs(banana.position.y) > 1000 {
+		if banana.position.x < 0 || banana.position.x > size.width  {
 			banana.removeFromParent()
 			banana = nil
 			changePlayer()

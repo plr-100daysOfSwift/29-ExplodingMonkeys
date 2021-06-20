@@ -22,7 +22,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 	var player2: SKSpriteNode!
 	var banana: SKSpriteNode!
 
-	var currentPlayer = 1
+	var currentPlayer = Player(rawValue: 1)
 
 	override func didMove(to view: SKView) {
 		physicsWorld.contactDelegate = self
@@ -62,7 +62,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		banana.physicsBody?.usesPreciseCollisionDetection = true
 		addChild(banana)
 
-		if currentPlayer == 1 {
+		if currentPlayer?.rawValue == 1 {
 			banana.position = CGPoint(x: player1.position.x - 30, y: player1.position.y + 40)
 			banana.physicsBody?.angularVelocity = -20
 			let raiseArm = SKAction.setTexture(SKTexture(imageNamed: "player1Throw"))
@@ -171,13 +171,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		}
 
 	func changePlayer() {
-		if currentPlayer == 1 {
-			currentPlayer = 2
+		if currentPlayer?.rawValue == 1 {
+			currentPlayer = Player(rawValue: 2)
 		} else {
-			currentPlayer = 1
+			currentPlayer = Player(rawValue: 1)
 		}
 
-		viewController.activatePlayer(number: currentPlayer)
+		viewController.activatePlayer(number: currentPlayer?.rawValue ?? 1)
 
 	}
 

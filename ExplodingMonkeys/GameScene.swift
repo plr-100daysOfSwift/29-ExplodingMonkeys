@@ -13,7 +13,7 @@ enum CollisionTypes: UInt32 {
 	case player = 4
 }
 
-class GameScene: SKScene {
+class GameScene: SKScene, SKPhysicsContactDelegate {
 
 	var viewController: GameViewController!
 	var buildings = [BuildingNode]()
@@ -25,6 +25,7 @@ class GameScene: SKScene {
 	var currentPlayer = 1
 
 	override func didMove(to view: SKView) {
+		physicsWorld.contactDelegate = self
 		backgroundColor = UIColor(hue: 0.669, saturation: 0.99, brightness: 0.67, alpha: 1)
 		createBuildings()
 		createPlayers()

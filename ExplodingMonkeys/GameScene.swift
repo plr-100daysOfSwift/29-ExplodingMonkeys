@@ -54,6 +54,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 			banana = nil
 		}
 		banana = SKSpriteNode(imageNamed: "banana")
+		banana.name = "banana"
 		banana.physicsBody = SKPhysicsBody(circleOfRadius: banana.size.width / 2)
 		banana.physicsBody?.categoryBitMask = CollisionTypes.banana.rawValue
 		banana.physicsBody?.collisionBitMask = CollisionTypes.building.rawValue | CollisionTypes.player.rawValue

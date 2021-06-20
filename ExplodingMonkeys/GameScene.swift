@@ -157,7 +157,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 			player.removeFromParent()
 			banana.removeFromParent()
 
-			DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+			DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [unowned self] in
 				let newGame = GameScene(size: self.size)
 				newGame.viewController = self.viewController
 				self.viewController.currentGame = newGame

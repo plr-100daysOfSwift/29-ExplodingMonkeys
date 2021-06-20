@@ -63,6 +63,13 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cWl-yr-dIP">
+                                <rect key="frame" x="22" y="67" width="120" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="4qk-I5-YsI"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -72,6 +79,7 @@
                         <outlet property="angleSlider" destination="Lws-Ay-G7K" id="izG-hr-yGu"/>
                         <outlet property="launchButton" destination="M0i-fO-DnJ" id="eDV-Sl-Z4k"/>
                         <outlet property="playerLabel" destination="6ka-FP-VLq" id="v43-Ec-iSE"/>
+                        <outlet property="scoreLabel" destination="cWl-yr-dIP" id="cq4-84-onD"/>
                         <outlet property="velocityLabel" destination="y0O-yK-SXJ" id="kRI-PB-foP"/>
                         <outlet property="velocitySlider" destination="FX1-Hk-5kH" id="kAI-Wz-CjB"/>
                     </connections>

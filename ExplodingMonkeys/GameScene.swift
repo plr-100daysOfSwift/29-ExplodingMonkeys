@@ -15,7 +15,7 @@ enum CollisionTypes: UInt32 {
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
 
-	var viewController: GameViewController!
+	weak var viewController: GameViewController!
 	var buildings = [BuildingNode]()
 
 	var player1: SKSpriteNode!

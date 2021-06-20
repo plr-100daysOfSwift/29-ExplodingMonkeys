@@ -65,4 +65,8 @@ class BuildingNode: SKSpriteNode {
 		return img
 	}
 
+	func hit(at: CGPoint) {
+
+	}
+
 }

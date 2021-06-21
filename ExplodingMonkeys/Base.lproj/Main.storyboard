@@ -69,6 +69,15 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wind" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="efc-pp-WAC">
+                                <rect key="frame" x="1096" y="60" width="250" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="aMn-76-rru"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="4qk-I5-YsI"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -85,8 +94,10 @@
                             <constraint firstItem="uWi-UQ-5Cw" firstAttribute="top" secondItem="Lws-Ay-G7K" secondAttribute="top" constant="10" id="ZWC-e3-HUR"/>
                             <constraint firstItem="4qk-I5-YsI" firstAttribute="trailing" secondItem="M0i-fO-DnJ" secondAttribute="trailing" constant="20" id="dgw-lt-zzc"/>
                             <constraint firstItem="uWi-UQ-5Cw" firstAttribute="leading" secondItem="Lws-Ay-G7K" secondAttribute="trailing" constant="8" symbolic="YES" id="fGQ-fL-fgR"/>
+                            <constraint firstItem="efc-pp-WAC" firstAttribute="trailing" secondItem="M0i-fO-DnJ" secondAttribute="trailing" id="jjI-q2-xX4"/>
                             <constraint firstItem="cWl-yr-dIP" firstAttribute="leading" secondItem="4qk-I5-YsI" secondAttribute="leading" constant="22" id="lmm-dz-55R"/>
                             <constraint firstItem="Lws-Ay-G7K" firstAttribute="leading" secondItem="4qk-I5-YsI" secondAttribute="leading" constant="22" id="oTd-L9-Fgt"/>
+                            <constraint firstItem="efc-pp-WAC" firstAttribute="top" secondItem="M0i-fO-DnJ" secondAttribute="bottom" constant="8" id="sur-zC-2r3"/>
                             <constraint firstItem="M0i-fO-DnJ" firstAttribute="top" secondItem="4qk-I5-YsI" secondAttribute="top" constant="13" id="xSQ-hX-kCJ"/>
                             <constraint firstItem="Lws-Ay-G7K" firstAttribute="top" secondItem="4qk-I5-YsI" secondAttribute="top" constant="20" id="zCA-PV-e7b"/>
                         </constraints>
@@ -99,11 +110,12 @@
                         <outlet property="scoreLabel" destination="cWl-yr-dIP" id="cq4-84-onD"/>
                         <outlet property="velocityLabel" destination="y0O-yK-SXJ" id="kRI-PB-foP"/>
                         <outlet property="velocitySlider" destination="FX1-Hk-5kH" id="kAI-Wz-CjB"/>
+                        <outlet property="windLabel" destination="efc-pp-WAC" id="j9C-JT-lhj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-106.27118644067797" y="79.756097560975604"/>
+            <point key="canvasLocation" x="-106.29575402635432" y="79.6875"/>
         </scene>
     </scenes>
     <resources>

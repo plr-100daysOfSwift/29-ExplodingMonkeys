@@ -22,7 +22,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 	var player2: SKSpriteNode!
 	var banana: SKSpriteNode!
 
-	var currentPlayer: Player!
+	var currentPlayerId: Int!
 
 	override func didMove(to view: SKView) {
 		physicsWorld.contactDelegate = self
@@ -62,7 +62,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		banana.physicsBody?.usesPreciseCollisionDetection = true
 		addChild(banana)
 
-		if currentPlayer?.id == 1 {
+		if currentPlayerId == 1 {
 			banana.position = CGPoint(x: player1.position.x - 30, y: player1.position.y + 40)
 			banana.physicsBody?.angularVelocity = -20
 			let raiseArm = SKAction.setTexture(SKTexture(imageNamed: "player1Throw"))
@@ -157,33 +157,37 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		player.removeFromParent()
 		banana.removeFromParent()
 
+		var isGameOver = false
+
 		DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [unowned self] in
-			if let currentPlayer = self.currentPlayer {
-				self.viewController.didWin(currentPlayer)
+			if let currentPlayerId = self.currentPlayerId {
+				isGameOver = self.viewController.isWinner(currentPlayerId)
 			}
 		}
 
-		DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [unowned self] in
-			let newGame = GameScene(size: self.size)
-			newGame.viewController = self.viewController
-			self.viewController.currentGame = newGame
+		if !isGameOver {
+			DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [unowned self] in
+				let newGame = GameScene(size: self.size)
+				newGame.viewController = self.viewController
+				self.viewController.currentGame = newGame
 
-			self.changePlayer()
-			newGame.currentPlayer = self.currentPlayer
+				self.changePlayer()
+				newGame.currentPlayerId = self.currentPlayerId
 
-			let transition = SKTransition.doorway(withDuration: 2.5)
-			self.view?.presentScene(newGame, transition: transition)
+				let transition = SKTransition.doorway(withDuration: 2.5)
+				self.view?.presentScene(newGame, transition: transition)
+			}
 		}
 	}
 
 	func changePlayer() {
-		if currentPlayer?.id == 1 {
-			currentPlayer = viewController.player2
+		if currentPlayerId == 1 {
+			currentPlayerId = viewController.player2.id
 		} else {
-			currentPlayer = viewController.player1
+			currentPlayerId = viewController.player1.id
 		}
 
-		viewController.activatePlayer(player: currentPlayer)
+		viewController.activatePlayer(playerId: currentPlayerId)
 
 	}
 

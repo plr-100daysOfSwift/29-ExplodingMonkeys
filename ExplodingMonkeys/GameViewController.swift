@@ -40,7 +40,7 @@ class GameViewController: UIViewController {
 				view.presentScene(scene)
 				currentGame = scene as? GameScene
 				currentGame.viewController = self
-				currentGame.currentPlayer = player1
+				currentGame.currentPlayerId = player1.id
 			}
 
 			view.ignoresSiblingOrder = true
@@ -84,8 +84,8 @@ class GameViewController: UIViewController {
 		currentGame.launch(angle: Int(angleSlider.value), velocity: Int(velocitySlider.value))
 	}
 
-	func activatePlayer(player: Player) {
-		switch player.id {
+	func activatePlayer(playerId: Int) {
+		switch playerId {
 		case 1:
 			playerLabel.text = "<<< PLAYER ONE"
 		case 2:
@@ -100,14 +100,22 @@ class GameViewController: UIViewController {
 		scoreLabel.text = "Score: \(player1.score):\(player2.score)"
 	}
 
-	func didWin(_ player: Player) {
-		if player == player1 {
+	func isWinner(_ playerId: Int) -> Bool {
+		if playerId == player1.id {
 			player1.increment()
+			scoreLabel.text = "Score: \(player1.score):\(player2.score)"
+			if player1.isWinner {
+				return true
+			}
 		} else {
 			player2.increment()
+			scoreLabel.text = "Score: \(player1.score):\(player2.score)"
+			if player2.isWinner {
+				return true
+			}
 		}
 
-		scoreLabel.text = "Score: \(player1.score):\(player2.score)"
+		return false
 	}
 	
 }

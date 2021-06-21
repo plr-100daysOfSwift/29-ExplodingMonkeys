@@ -105,12 +105,14 @@ class GameViewController: UIViewController {
 			player1.increment()
 			scoreLabel.text = "Score: \(player1.score):\(player2.score)"
 			if player1.isWinner {
+				playerLabel.text = "PLAYER ONE WINS!"
 				return true
 			}
 		} else {
 			player2.increment()
 			scoreLabel.text = "Score: \(player1.score):\(player2.score)"
 			if player2.isWinner {
+				playerLabel.text = "PLAYER TWO WINS!"
 				return true
 			}
 		}

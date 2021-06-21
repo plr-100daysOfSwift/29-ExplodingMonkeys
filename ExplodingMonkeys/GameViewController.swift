@@ -34,14 +34,16 @@ class GameViewController: UIViewController {
 		if let view = self.view as! SKView? {
 			// Load the SKScene from 'GameScene.sks'
 			if let scene = SKScene(fileNamed: "GameScene") {
+				currentGame = scene as? GameScene
+				currentGame.viewController = self
+				currentGame.currentPlayerId = player1.id
+
 				// Set the scale mode to scale to fit the window
 				scene.scaleMode = .aspectFill
 
 				// Present the scene
 				view.presentScene(scene)
-				currentGame = scene as? GameScene
-				currentGame.viewController = self
-				currentGame.currentPlayerId = player1.id
+				setWindLabel()
 			}
 
 			view.ignoresSiblingOrder = true
@@ -81,6 +83,7 @@ class GameViewController: UIViewController {
 		velocitySlider.isHidden = true
 		velocityLabel.isHidden = true
 		launchButton.isHidden = true
+		windLabel.isHidden = true
 
 		currentGame.launch(angle: Int(angleSlider.value), velocity: Int(velocitySlider.value))
 	}
@@ -98,6 +101,7 @@ class GameViewController: UIViewController {
 		velocitySlider.isHidden = false
 		velocityLabel.isHidden = false
 		launchButton.isHidden = false
+		windLabel.isHidden = false
 		scoreLabel.text = "Score: \(player1.score):\(player2.score)"
 	}
 
@@ -120,5 +124,19 @@ class GameViewController: UIViewController {
 
 		return false
 	}
-	
+
+	func setWindLabel() {
+		if let windFactor = currentGame.windFactor {
+
+			switch windFactor {
+			case _ where windFactor < 0:
+				windLabel.text = "Wind: \(abs(windFactor) * 10) knots easterly"
+			case _ where windFactor > 0:
+				windLabel.text = "Wind: \(abs(windFactor) * 10) knots westerly"
+			default:
+				windLabel.text = "No wind"
+			}
+		}
+	}
+
 }

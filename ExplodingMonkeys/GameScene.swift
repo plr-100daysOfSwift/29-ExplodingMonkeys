@@ -161,16 +161,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 			if let currentPlayerId = self.currentPlayerId {
 				let isGameOver = self.viewController.isWinner(currentPlayerId)
 				if !isGameOver {
-					run(SKAction.wait(forDuration: 1.0))
-					let newGame = GameScene(size: self.size)
-					newGame.viewController = self.viewController
-					self.viewController.currentGame = newGame
+					DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+						let newGame = GameScene(size: self.size)
+						newGame.viewController = self.viewController
+						self.viewController.currentGame = newGame
 
-					self.changePlayer()
-					newGame.currentPlayerId = self.currentPlayerId
+						self.changePlayer()
+						newGame.currentPlayerId = self.currentPlayerId
 
-					let transition = SKTransition.doorway(withDuration: 2.5)
-					self.view?.presentScene(newGame, transition: transition)
+						let transition = SKTransition.doorway(withDuration: 2.5)
+						self.view?.presentScene(newGame, transition: transition)
+					}
 				}
 			}
 		}

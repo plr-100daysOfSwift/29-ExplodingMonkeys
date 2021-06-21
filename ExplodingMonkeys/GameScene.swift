@@ -157,27 +157,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		player.removeFromParent()
 		banana.removeFromParent()
 
-		var isGameOver = false
-
 		DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [unowned self] in
 			if let currentPlayerId = self.currentPlayerId {
-				isGameOver = self.viewController.isWinner(currentPlayerId)
+				let isGameOver = self.viewController.isWinner(currentPlayerId)
+				if !isGameOver {
+					run(SKAction.wait(forDuration: 1.0))
+					let newGame = GameScene(size: self.size)
+					newGame.viewController = self.viewController
+					self.viewController.currentGame = newGame
+
+					self.changePlayer()
+					newGame.currentPlayerId = self.currentPlayerId
+
+					let transition = SKTransition.doorway(withDuration: 2.5)
+					self.view?.presentScene(newGame, transition: transition)
+				}
 			}
 		}
 
-		if !isGameOver {
-			DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [unowned self] in
-				let newGame = GameScene(size: self.size)
-				newGame.viewController = self.viewController
-				self.viewController.currentGame = newGame
-
-				self.changePlayer()
-				newGame.currentPlayerId = self.currentPlayerId
-
-				let transition = SKTransition.doorway(withDuration: 2.5)
-				self.view?.presentScene(newGame, transition: transition)
-			}
-		}
 	}
 
 	func changePlayer() {

@@ -23,9 +23,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 	var banana: SKSpriteNode!
 
 	var currentPlayerId: Int!
+	var windFactor: Int!
 
 	override func didMove(to view: SKView) {
 		physicsWorld.contactDelegate = self
+		windFactor = Int.random(in: -4 ... 4)
+		physicsWorld.gravity.dx = CGFloat(windFactor)
 		backgroundColor = UIColor(hue: 0.669, saturation: 0.99, brightness: 0.67, alpha: 1)
 		createBuildings()
 		createPlayers()

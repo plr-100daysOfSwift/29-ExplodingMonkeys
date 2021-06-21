@@ -11,7 +11,8 @@ import SpriteKit
 class GameViewController: UIViewController {
 
 	var currentGame: GameScene!
-	var score: Score!
+	var player1 = Player(id: 1)
+	var player2 = Player(id: 2)
 
 	@IBOutlet var angleSlider: UISlider!
 	@IBOutlet var angleLabel: UILabel!
@@ -24,8 +25,7 @@ class GameViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		score = Score()
-		scoreLabel.text = score.description()
+		scoreLabel.text = "Score: \(player1.score):\(player2.score)"
 
 		angleChanged(self)
 		velocityChanged(self)
@@ -40,6 +40,7 @@ class GameViewController: UIViewController {
 				view.presentScene(scene)
 				currentGame = scene as? GameScene
 				currentGame.viewController = self
+				currentGame.currentPlayer = player1
 			}
 
 			view.ignoresSiblingOrder = true
@@ -83,23 +84,30 @@ class GameViewController: UIViewController {
 		currentGame.launch(angle: Int(angleSlider.value), velocity: Int(velocitySlider.value))
 	}
 
-	func activatePlayer(number: Int) {
-		if number == 1 {
+	func activatePlayer(player: Player) {
+		switch player.id {
+		case 1:
 			playerLabel.text = "<<< PLAYER ONE"
-		} else {
-			playerLabel.text = "PLAYER TWO >>>"
+		case 2:
+				playerLabel.text = "PLAYER TWO >>>"
+		default: break
 		}
 		angleSlider.isHidden = false
 		angleLabel.isHidden = false
 		velocitySlider.isHidden = false
 		velocityLabel.isHidden = false
 		launchButton.isHidden = false
-		scoreLabel.text = score.description()
+		scoreLabel.text = "Score: \(player1.score):\(player2.score)"
 	}
 
 	func didWin(_ player: Player) {
-		score.increment(player: player)
-		scoreLabel.text = score.description()
+		if player == player1 {
+			player1.increment()
+		} else {
+			player2.increment()
+		}
+
+		scoreLabel.text = "Score: \(player1.score):\(player2.score)"
 	}
 	
 }

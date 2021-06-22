@@ -77,12 +77,7 @@ class GameViewController: UIViewController {
 	}
 
 	@IBAction func launch(_ sender: Any) {
-		angleSlider.isHidden = true
-		angleLabel.isHidden = true
-		velocitySlider.isHidden = true
-		velocityLabel.isHidden = true
-		launchButton.isHidden = true
-		windLabel.isHidden = true
+		toggleVisibility()
 
 		currentGame.launch(angle: Int(angleSlider.value), velocity: Int(velocitySlider.value))
 	}
@@ -96,27 +91,22 @@ class GameViewController: UIViewController {
 		default: break
 		}
 		resetSliders(player)
-		angleSlider.isHidden = false
-		angleLabel.isHidden = false
-		velocitySlider.isHidden = false
-		velocityLabel.isHidden = false
-		launchButton.isHidden = false
-		windLabel.isHidden = false
-		scoreLabel.text = "Score: \(player1.score):\(player2.score)"
+		toggleVisibility()
+		refreshScoreLabel()
 		
 	}
 
 	func isWinner(_ playerId: Int) -> Bool {
 		if playerId == player1.id {
 			player1.increment()
-			scoreLabel.text = "Score: \(player1.score):\(player2.score)"
+			refreshScoreLabel()
 			if player1.isWinner {
 				playerLabel.text = "PLAYER ONE WINS!"
 				return true
 			}
 		} else {
 			player2.increment()
-			scoreLabel.text = "Score: \(player1.score):\(player2.score)"
+			refreshScoreLabel()
 			if player2.isWinner {
 				playerLabel.text = "PLAYER TWO WINS!"
 				return true
@@ -167,4 +157,18 @@ class GameViewController: UIViewController {
 		setWindLabel()
 		resetSliders()
 	}
+
+	fileprivate func toggleVisibility() {
+		angleSlider.isHidden.toggle()
+		angleLabel.isHidden.toggle()
+		velocitySlider.isHidden.toggle()
+		velocityLabel.isHidden.toggle()
+		launchButton.isHidden.toggle()
+		windLabel.isHidden.toggle()
+	}
+
+	func refreshScoreLabel() {
+		scoreLabel.text = "Score: \(player1.score):\(player2.score)"
+	}
+
 }

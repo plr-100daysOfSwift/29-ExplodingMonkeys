@@ -94,11 +94,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 	func createPlayers() {
 		player1 = SKSpriteNode(imageNamed: "player")
 		player1.name = "player1"
-		player1.physicsBody = SKPhysicsBody(circleOfRadius: player1.size.width / 2)
-		player1.physicsBody?.categoryBitMask = CollisionTypes.player.rawValue
-		player1.physicsBody?.collisionBitMask = CollisionTypes.banana.rawValue
-		player1.physicsBody?.contactTestBitMask = CollisionTypes.banana.rawValue
-		player1.physicsBody?.isDynamic = false
+		setPlayerPhysicsBody(player: player1)
 
 		let player1building = buildings[1]
 		player1.position = CGPoint(x: player1building.position.x, y: player1building.position.y + (player1building.size.height + player1.size.height) / 2)
@@ -108,9 +104,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		player2 = SKSpriteNode(imageNamed: "player")
 		player2.name = "player2"
 		player2.physicsBody = SKPhysicsBody(circleOfRadius: player2.size.width / 2)
-		player2.physicsBody?.categoryBitMask = CollisionTypes.player.rawValue
-		player2.physicsBody?.collisionBitMask = CollisionTypes.banana.rawValue
-		player2.physicsBody?.contactTestBitMask = CollisionTypes.banana.rawValue
+		setPlayerPhysicsBody(player: player2)
 		player2.physicsBody?.isDynamic = false
 
 		let player2building = buildings[buildings.count - 2]
@@ -118,6 +112,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
 		addChild(player2)
 
+	}
+
+	func setPlayerPhysicsBody(player: SKSpriteNode) {
+		player.physicsBody = SKPhysicsBody(circleOfRadius: player.size.width / 2)
+		player.physicsBody?.categoryBitMask = CollisionTypes.player.rawValue
+		player.physicsBody?.collisionBitMask = CollisionTypes.banana.rawValue
+		player.physicsBody?.contactTestBitMask = CollisionTypes.banana.rawValue
+		player.physicsBody?.isDynamic = false
 	}
 
 	func deg2rad(degrees: Int) -> Double {

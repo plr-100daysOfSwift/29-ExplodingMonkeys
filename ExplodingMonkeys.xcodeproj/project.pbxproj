@@ -17,6 +17,7 @@
 		DAD02B79267D58DA00077023 /* BuildingNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD02B78267D58DA00077023 /* BuildingNode.swift */; };
 		DADCAA3A267EAC5B006B45A4 /* hitPlayer.sks in Resources */ = {isa = PBXBuildFile; fileRef = DADCAA38267EAC5B006B45A4 /* hitPlayer.sks */; };
 		DADCAA3B267EAC5B006B45A4 /* hitBuilding.sks in Resources */ = {isa = PBXBuildFile; fileRef = DADCAA39267EAC5B006B45A4 /* hitBuilding.sks */; };
+		DAF59D6F2681B27B00D2A057 /*  Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF59D6E2681B27B00D2A057 /*  Constants.swift */; };
 		DAFF05D326800E4000C8063A /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFF05D226800E4000C8063A /* Player.swift */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +34,7 @@
 		DAD02B78267D58DA00077023 /* BuildingNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingNode.swift; sourceTree = "<group>"; };
 		DADCAA38267EAC5B006B45A4 /* hitPlayer.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = hitPlayer.sks; sourceTree = "<group>"; };
 		DADCAA39267EAC5B006B45A4 /* hitBuilding.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = hitBuilding.sks; sourceTree = "<group>"; };
+		DAF59D6E2681B27B00D2A057 /*  Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " Constants.swift"; sourceTree = "<group>"; };
 		DAFF05D226800E4000C8063A /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -78,6 +80,7 @@
 				DADCAA39267EAC5B006B45A4 /* hitBuilding.sks */,
 				DADCAA38267EAC5B006B45A4 /* hitPlayer.sks */,
 				DAFF05D226800E4000C8063A /* Player.swift */,
+				DAF59D6E2681B27B00D2A057 /*  Constants.swift */,
 			);
 			path = ExplodingMonkeys;
 			sourceTree = "<group>";
@@ -155,6 +158,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAF59D6F2681B27B00D2A057 /*  Constants.swift in Sources */,
 				DAD02B66267D56B200077023 /* GameScene.swift in Sources */,
 				DAD02B79267D58DA00077023 /* BuildingNode.swift in Sources */,
 				DAD02B68267D56B200077023 /* GameViewController.swift in Sources */,

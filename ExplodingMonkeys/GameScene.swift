@@ -10,7 +10,8 @@ import SpriteKit
 enum CollisionTypes: UInt32 {
 	case banana = 1
 	case building = 2
-	case player = 4
+	case player1 = 4
+	case player2 = 8
 }
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
@@ -60,12 +61,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		banana.name = "banana"
 		banana.physicsBody = SKPhysicsBody(circleOfRadius: banana.size.width / 2)
 		banana.physicsBody?.categoryBitMask = CollisionTypes.banana.rawValue
-		banana.physicsBody?.collisionBitMask = CollisionTypes.building.rawValue | CollisionTypes.player.rawValue
-		banana.physicsBody?.contactTestBitMask = CollisionTypes.building.rawValue | CollisionTypes.player.rawValue
+		banana.physicsBody?.collisionBitMask = CollisionTypes.building.rawValue | CollisionTypes.player1.rawValue | CollisionTypes.player2.rawValue
+		banana.physicsBody?.contactTestBitMask = CollisionTypes.building.rawValue | CollisionTypes.player1.rawValue | CollisionTypes.player2.rawValue
 		banana.physicsBody?.usesPreciseCollisionDetection = true
 		addChild(banana)
 
 		if currentPlayer.id == 1 {
+			setPlayerBitMasks(player: player1, target: player2)
 			banana.position = CGPoint(x: player1.position.x - 30, y: player1.position.y + 40)
 			banana.physicsBody?.angularVelocity = -20
 			let raiseArm = SKAction.setTexture(SKTexture(imageNamed: "player1Throw"))
@@ -77,6 +79,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 			let impulse = CGVector(dx: cos(radians) * speed, dy: sin(radians) * speed)
 			banana.physicsBody?.applyImpulse(impulse)
 		} else {
+			setPlayerBitMasks(player: player2, target: player1)
 			banana.position = CGPoint(x: player2.position.x + 30, y: player2.position.y + 40)
 			banana.physicsBody?.angularVelocity = 20
 			let raiseArm = SKAction.setTexture(SKTexture(imageNamed: "player2Throw"))
@@ -116,10 +119,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
 	func setPlayerPhysicsBody(player: SKSpriteNode) {
 		player.physicsBody = SKPhysicsBody(circleOfRadius: player.size.width / 2)
-		player.physicsBody?.categoryBitMask = CollisionTypes.player.rawValue
+		player.physicsBody?.categoryBitMask = player.name == "player1" ? CollisionTypes.player1.rawValue : CollisionTypes.player2.rawValue
+
 		player.physicsBody?.collisionBitMask = CollisionTypes.banana.rawValue
 		player.physicsBody?.contactTestBitMask = CollisionTypes.banana.rawValue
 		player.physicsBody?.isDynamic = false
+	}
+
+	func setPlayerBitMasks(player: SKSpriteNode,  target: SKSpriteNode) {
+		player.physicsBody?.collisionBitMask = 0
+		player.physicsBody?.contactTestBitMask = 0
+		target.physicsBody?.collisionBitMask = CollisionTypes.banana.rawValue
+		target.physicsBody?.contactTestBitMask = CollisionTypes.banana.rawValue
+
+		banana.physicsBody?.collisionBitMask = player.name == "player1" ? CollisionTypes.building.rawValue | CollisionTypes.player2.rawValue : CollisionTypes.building.rawValue | CollisionTypes.player1.rawValue
+		banana.physicsBody?.contactTestBitMask = player.name == "player1" ? CollisionTypes.building.rawValue | CollisionTypes.player2.rawValue : CollisionTypes.building.rawValue | CollisionTypes.player1.rawValue
 	}
 
 	func deg2rad(degrees: Int) -> Double {

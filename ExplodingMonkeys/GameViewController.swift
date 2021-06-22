@@ -28,7 +28,7 @@ class GameViewController: UIViewController {
 
 		scoreLabel.text = "Score: \(player1.score):\(player2.score)"
 
-		setSliders()
+		resetSliders()
 
 		if let view = self.view as! SKView? {
 			// Load the SKScene from 'GameScene.sks'
@@ -95,6 +95,7 @@ class GameViewController: UIViewController {
 				playerLabel.text = "PLAYER TWO >>>"
 		default: break
 		}
+		resetSliders(player)
 		angleSlider.isHidden = false
 		angleLabel.isHidden = false
 		velocitySlider.isHidden = false
@@ -102,6 +103,7 @@ class GameViewController: UIViewController {
 		launchButton.isHidden = false
 		windLabel.isHidden = false
 		scoreLabel.text = "Score: \(player1.score):\(player2.score)"
+		
 	}
 
 	func isWinner(_ playerId: Int) -> Bool {
@@ -138,9 +140,18 @@ class GameViewController: UIViewController {
 		}
 	}
 
-	func setSliders() {
-		angleSlider.value = 45
-		velocitySlider.value = 125
+	func resetSliders(_ player: Player? = nil) {
+		var angle: Float
+		var velocity: Float
+		if let player = player {
+			angle = player.lastUsedAngle
+			velocity = player.lastUsedVelocity
+		} else {
+			angle = Constants.defaultAngle
+			velocity = Constants.defaultVelocity
+		}
+		angleSlider.value = angle
+		velocitySlider.value = velocity
 		angleChanged(self)
 		velocityChanged(self)
 	}
@@ -150,4 +161,10 @@ class GameViewController: UIViewController {
 		player.lastUsedVelocity = velocitySlider.value
 	}
 
+	func reset() {
+		player1.reset()
+		player2.reset()
+		setWindLabel()
+		resetSliders()
+	}
 }

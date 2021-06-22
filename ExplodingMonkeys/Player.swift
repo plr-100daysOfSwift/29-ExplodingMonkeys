@@ -27,6 +27,11 @@ class Player: Equatable {
 		score += 1
 	}
 
+	func reset() {
+		lastUsedAngle = Constants.defaultAngle
+		lastUsedVelocity = Constants.defaultVelocity
+	}
+
 	var isWinner: Bool {
 		score >= 3
 	}

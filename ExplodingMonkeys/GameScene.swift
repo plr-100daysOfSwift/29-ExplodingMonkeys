@@ -176,8 +176,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 						let transition = SKTransition.doorway(withDuration: 2.5)
 						self.view?.presentScene(newGame, transition: transition)
 						// TODO: It doesn't feel right to call setWindLabel here like this
-						self.viewController.setWindLabel()
-						self.viewController.setSliders()
+						self.viewController.reset()
 					}
 				}
 			}

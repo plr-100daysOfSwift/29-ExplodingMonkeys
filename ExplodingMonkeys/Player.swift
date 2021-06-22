@@ -20,8 +20,8 @@ class Player: Equatable {
 	var id: Int
 	var score = 0
 
-	var lastUsedAngle = 45
-	var lastUsedVelocity = 125
+	var lastUsedAngle: Float = 45
+	var lastUsedVelocity: Float = 125
 
 	func increment() {
 		score += 1

@@ -145,4 +145,9 @@ class GameViewController: UIViewController {
 		velocityChanged(self)
 	}
 
+	func saveSettings(player: Player) {
+		player.lastUsedAngle = angleSlider.value
+		player.lastUsedVelocity = velocitySlider.value
+	}
+
 }

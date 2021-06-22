@@ -88,6 +88,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 			let impulse = CGVector(dx: cos(radians) * -speed, dy: sin(radians) * speed)
 			banana.physicsBody?.applyImpulse(impulse)
 		}
+		viewController.saveSettings(player: currentPlayer)
 	}
 
 	func createPlayers() {

@@ -36,7 +36,7 @@ class GameViewController: UIViewController {
 			if let scene = SKScene(fileNamed: "GameScene") {
 				currentGame = scene as? GameScene
 				currentGame.viewController = self
-				currentGame.currentPlayerId = player1.id
+				currentGame.currentPlayer = player1
 
 				// Set the scale mode to scale to fit the window
 				scene.scaleMode = .aspectFill
@@ -88,8 +88,8 @@ class GameViewController: UIViewController {
 		currentGame.launch(angle: Int(angleSlider.value), velocity: Int(velocitySlider.value))
 	}
 
-	func activatePlayer(playerId: Int) {
-		switch playerId {
+	func activatePlayer(player: Player) {
+		switch player.id {
 		case 1:
 			playerLabel.text = "<<< PLAYER ONE"
 		case 2:

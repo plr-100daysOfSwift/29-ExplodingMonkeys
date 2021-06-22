@@ -22,7 +22,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 	var player2: SKSpriteNode!
 	var banana: SKSpriteNode!
 
-	var currentPlayerId: Int!
+	var currentPlayer: Player!
 	var windFactor: Int!
 
 	override func didMove(to view: SKView) {
@@ -65,7 +65,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		banana.physicsBody?.usesPreciseCollisionDetection = true
 		addChild(banana)
 
-		if currentPlayerId == 1 {
+		if currentPlayer.id == 1 {
 			banana.position = CGPoint(x: player1.position.x - 30, y: player1.position.y + 40)
 			banana.physicsBody?.angularVelocity = -20
 			let raiseArm = SKAction.setTexture(SKTexture(imageNamed: "player1Throw"))
@@ -161,8 +161,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		banana.removeFromParent()
 
 		DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [unowned self] in
-			if let currentPlayerId = self.currentPlayerId {
-				let isGameOver = self.viewController.isWinner(currentPlayerId)
+			if let _ = self.currentPlayer {
+				let isGameOver = self.viewController.isWinner(currentPlayer.id)
 				if !isGameOver {
 					DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
 						let newGame = GameScene(size: self.size)
@@ -170,7 +170,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 						self.viewController.currentGame = newGame
 
 						self.changePlayer()
-						newGame.currentPlayerId = self.currentPlayerId
+						newGame.currentPlayer = self.currentPlayer
 
 						let transition = SKTransition.doorway(withDuration: 2.5)
 						self.view?.presentScene(newGame, transition: transition)
@@ -184,13 +184,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 	}
 
 	func changePlayer() {
-		if currentPlayerId == 1 {
-			currentPlayerId = viewController.player2.id
+		if currentPlayer.id == 1 {
+			currentPlayer = viewController.player2
 		} else {
-			currentPlayerId = viewController.player1.id
+			currentPlayer = viewController.player1
 		}
 
-		viewController.activatePlayer(playerId: currentPlayerId)
+		viewController.activatePlayer(player: currentPlayer)
 
 	}
 

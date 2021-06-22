@@ -7,11 +7,23 @@
 
 import Foundation
 
-struct Player: Equatable {
+class Player: Equatable {
+
+	static func == (lhs: Player, rhs: Player) -> Bool {
+		lhs.id == rhs.id
+	}
+
+	init(id: Int) {
+		self.id = id
+	}
+
 	var id: Int
 	var score = 0
 
-	mutating func increment() {
+	var lastUsedAngle = 45
+	var lastUsedVelocity = 125
+
+	func increment() {
 		score += 1
 	}
 

@@ -176,6 +176,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 						self.view?.presentScene(newGame, transition: transition)
 						// TODO: It doesn't feel right to call setWindLabel here like this
 						self.viewController.setWindLabel()
+						self.viewController.setSliders()
 					}
 				}
 			}

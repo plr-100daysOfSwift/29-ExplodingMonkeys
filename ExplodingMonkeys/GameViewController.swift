@@ -28,8 +28,7 @@ class GameViewController: UIViewController {
 
 		scoreLabel.text = "Score: \(player1.score):\(player2.score)"
 
-		angleChanged(self)
-		velocityChanged(self)
+		setSliders()
 
 		if let view = self.view as! SKView? {
 			// Load the SKScene from 'GameScene.sks'
@@ -137,6 +136,13 @@ class GameViewController: UIViewController {
 				windLabel.text = "No wind"
 			}
 		}
+	}
+
+	func setSliders() {
+		angleSlider.value = 45
+		velocitySlider.value = 125
+		angleChanged(self)
+		velocityChanged(self)
 	}
 
 }
